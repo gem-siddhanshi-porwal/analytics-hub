@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Snowflakes conn" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-15T06:57:19" hostname="GEMGN-210079" time="4.619">
+  <properties/>
+  <testcase name="create snowFlakes connections and fetch data" classname="Snowflakes conn" time="4.619"/>
+  <system-out><![CDATA[net.snowflake.client.jdbc.SnowflakeResultSetV1@733e6df7
+net.snowflake.client.jdbc.SnowflakeResultSetV1@7fe07361
+Data feed in csv successfully
+Data feed in csv successfully
+Data feed in csv successfully
+Data feed in csv successfully
+All the column names are matching
+Number of count does not match the for both the dbs
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

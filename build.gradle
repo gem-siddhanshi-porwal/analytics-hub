@@ -1,0 +1,68 @@
+defaultTasks 'clean','test','aggregate'
+
+apply plugin: 'java'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+repositories {
+    mavenCentral()
+}
+buildscript {
+    project.ext {
+        serenityVersion = '2.3.12'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath('net.serenity-bdd:serenity-gradle-plugin:' + serenityVersion)
+    }
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    slf4jVersion = '1.7.7'
+    serenityCoreVersion = '3.2.5'
+    junitVersion = '4.13'
+    assertJVersion = '3.8.0'
+    logbackVersion = '1.2.3'
+    restAssuredVersion ='5.1.1'
+    jsonVersion= '20210307'
+}
+dependencies {
+    testImplementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+            // https://mvnrepository.com/artifact/net.serenity-bdd/serenity-cucumber
+            "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
+
+            "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-rest-assured:${serenityCoreVersion}",
+            "io.rest-assured:rest-assured:${restAssuredVersion}",
+            "org.json:json:${jsonVersion}",
+            "junit:junit:${junitVersion}",
+            "org.assertj:assertj-core:${assertJVersion}",
+            "net.snowflake:snowflake-jdbc:3.9.2",
+            "org.apache.poi:poi:3.9",
+            "org.apache.poi:poi-ooxml:3.9"
+
+}
+
+test {
+    filter {
+        //include specific method in any of the tests
+//        includeTestsMatching "*LoginRunner"
+//        include all tests from package
+//        includeTestsMatching "com.gemini.serenity.runner.W3SchoolRunner"
+        //include all integration tests
+        //includeTestsMatching "*IntegTest"
+    }
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+
+}
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)
