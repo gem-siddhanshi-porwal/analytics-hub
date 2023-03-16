@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Snowflakes conn" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-15T06:57:19" hostname="GEMGN-210079" time="4.619">
+<testsuite name="Snowflakes conn" tests="5" skipped="0" failures="2" errors="0" timestamp="2023-03-16T13:41:46" hostname="GEMGN-210079" time="4.623">
   <properties/>
-  <testcase name="create snowFlakes connections and fetch data" classname="Snowflakes conn" time="4.619"/>
-  <system-out><![CDATA[net.snowflake.client.jdbc.SnowflakeResultSetV1@733e6df7
-net.snowflake.client.jdbc.SnowflakeResultSetV1@7fe07361
-Data feed in csv successfully
-Data feed in csv successfully
-Data feed in csv successfully
-Data feed in csv successfully
-All the column names are matching
-Number of count does not match the for both the dbs
+  <testcase name="Validate column Count for Raw db and STG db" classname="Snowflakes conn" time="2.74"/>
+  <testcase name="Validate column Name for Raw db and STG db" classname="Snowflakes conn" time="0.684">
+    <failure message="java.lang.AssertionError: The columns names didn't match" type="java.lang.AssertionError">java.lang.AssertionError: The columns names didn't match
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.gemini.Implementation.DbImplementation.validateColumnNameAndType(DbImplementation.java:57)
+	at com.gemini.Steps.SnowflakesConnSteps.validateColumnName(SnowflakesConnSteps.java:34)
+	at ✽.The user validates column names for both the table and writes the differences in &quot;resultErrorsColumnName&quot; file(file:///C:/Users/si.porwal/OneDrive%20-%20Gemini%20Solutions/Analytics%20Hub/ana%20hub/analytics-hub/src/test/resources/features/SnowFalkesConn.feature:12)
+</failure>
+  </testcase>
+  <testcase name="Validate column Type for Raw db and STG db" classname="Snowflakes conn" time="0.533">
+    <failure message="java.lang.AssertionError: The columns types didn't match" type="java.lang.AssertionError">java.lang.AssertionError: The columns types didn't match
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.gemini.Implementation.DbImplementation.validateColumnNameAndType(DbImplementation.java:57)
+	at com.gemini.Steps.SnowflakesConnSteps.validateColumnType(SnowflakesConnSteps.java:39)
+	at ✽.The user validates column types for both the table and writes the differences in &quot;resultErrorsColumnType&quot; file(file:///C:/Users/si.porwal/OneDrive%20-%20Gemini%20Solutions/Analytics%20Hub/ana%20hub/analytics-hub/src/test/resources/features/SnowFalkesConn.feature:17)
+</failure>
+  </testcase>
+  <testcase name="validate no of rows/records in tables" classname="Snowflakes conn" time="0.307"/>
+  <testcase name="validate no of columns in tables" classname="Snowflakes conn" time="0.358"/>
+  <system-out><![CDATA[net.snowflake.client.jdbc.SnowflakeSQLException: Result set has been closed.
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

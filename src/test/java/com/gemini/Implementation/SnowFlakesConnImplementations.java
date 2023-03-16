@@ -19,8 +19,7 @@ public class SnowFlakesConnImplementations {
     public static List<String> colNames2=new ArrayList<>();
     public static void writeDataDb1(String fileName) throws IOException, SQLException {
 
-        FileWriter DBData1 = new FileWriter( System.getProperty("user.dir")+"\\src\\test\\resources\\data\\"+fileName + ".csv");
-//        FileWriter DBData1 = new FileWriter(System.getProperty("user.dir")+"\\src\\test\\resources\\Data\\" + fileName + ".txt");
+         FileWriter DBData1 = new FileWriter(System.getProperty("user.dir")+"\\src\\test\\resources\\Data\\" + fileName + ".txt");
 //        CSVWriter DBData2 = new CSVWriter(new FileWriter(System.getProperty("user.dir")+"\\IdeaProjects\\Snowiee\\src\\test\\resources\\Data\\" + fileName + ".csv"));
         BufferedWriter buffer = new BufferedWriter(DBData1);
 //collection utils  apache commons
